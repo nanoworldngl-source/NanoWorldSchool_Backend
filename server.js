@@ -44,12 +44,12 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps or curl)
-    if (!origin || allowedOrigins.includes(origin)) {
+    // Allow requests with no origin (like mobile apps or curl) or from allowed origins
+    if (!origin || allowedOrigins.includes(origin) || origin.includes('google.com')) {
       callback(null, true);
     } else {
-      console.warn(`[CORS Blocked] Origin: ${origin}`);
-      callback(new Error('Not allowed by CORS'));
+      console.warn(`[CORS Warning] Origin not explicitly allowed: ${origin}`);
+      callback(null, true); // Allow but log, to avoid 403 blocks on legitimate crawlers
     }
   },
   credentials: true,
