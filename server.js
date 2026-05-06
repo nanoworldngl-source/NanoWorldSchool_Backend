@@ -39,7 +39,10 @@ const allowedOrigins = [
   'https://www.nanoworldschool.co.in',
   'https://api.nanoworldschool.co.in',
   'http://localhost:5173',
-  'http://localhost:3000'
+  'http://localhost:3000',
+  'https://nanoworldschool.online',
+  'https://www.nanoworldschool.online',
+  'https://api.nanoworldschool.online'
 ];
 
 app.use(cors({
